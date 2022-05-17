@@ -1,0 +1,226 @@
+from tkinter import *
+from time import *
+from random import *
+from math import *
+tk = Tk()
+s = Canvas(tk, width=1000, height=1000, background="grey38")
+s.pack()
+s.create_rectangle(0,700,1100,1100,fill = "red")
+s.create_line(875,500,950,500,fill = "orange",width = 10)
+s.create_line(950,500,975,500,fill = "orange",width = 4)
+s.create_polygon(875,500,885,550,940,550,950,500,fill = "white",outline = "black")
+s.create_oval(700,710,1300,900,fill = "red", outline = "grey",width = 3)
+s.create_rectangle(750,760,1200,850,fill = "red", outline = "grey",width = 3)
+
+importImage = PhotoImage(file = "raptors.png")
+s.create_image(250,100, image=importImage, anchor=N)
+
+
+for hole in range(100):
+            dx1 = randint(885,940)
+            dy1 = randint(500,545)
+            ds = randint(0,3)
+            dx2 = dx1 + ds
+            dy2 = dy1 + ds
+            s.create_rectangle(dx1,dy1,dx2,dy2,fill = "grey38",outline = "black")
+
+
+
+x8 = 50
+x9 = x8 + 50
+y8 = 675
+y9 = y8+50
+
+x3 = 100
+x4 = x3+625
+x5 = x3-25
+x6 = x3+25
+x7 = x3-50
+
+y3 = 725
+y4 = y3+50
+y5 = y3+25
+y6 = y3+135
+y7 = y3+75
+n = 0
+
+
+jump = 2
+
+f=0
+x1 = 8*f + 100      
+x2 = x1 + 50
+
+y1 = 0.2*f**2 - 22*f + 700   
+y2 = y1 + 50
+ex1 = x8+10
+ey1 = y8 + 10
+ex2 = ex1 + 10
+ey2 = ey1 + 10
+for f in range(100):
+      
+      
+      if x1<885:
+            x1 = 8*f + 100      
+            x2 = x1 + 50
+            
+            y1 = 0.2*f**2 - 22*f + 700   
+            y2 = y1 + 50
+      else:
+            x1 = x1
+            x2 = x1+50
+            y1 = y1 + 18
+            y2=y1+50
+      if n == 2:
+            jump = 0
+            
+      if 720<y3 < 750:
+            y3 = y3 - jump
+            x3 = x3
+            x4 = x3+625
+            x5 = x3-25
+            x6 = x3+25
+            x7 = x3-50
+            
+
+      
+            y4 = y3+50
+            y5 = y3+25
+            y6 = y3+135
+            y7 = y3+75
+
+
+            x8 = 50
+            x9 = x8 + 50
+            y8 = y8 - jump
+            y9 = y8+50
+            
+            ex1 = x8+30
+            ey1 = y8 + 10
+            ex2 = ex1 + 10
+            ey2 = ey1 + 10
+            
+            
+      else:
+            n = n + 1
+            jump  = jump * -1
+            y3 = y3 - jump
+            x3 = x3
+            x4 = x3+625
+            x5 = x3-25
+            x6 = x3+25
+            x7 = x3-50
+
+      
+            y4 = y3+50
+            y5 = y3+25
+            y6 = y3+135
+            y7 = y3+75
+
+            x8 = 50
+            x9 = x8 + 50
+            y8 = y8 - jump
+            y9 = y8+50
+            
+            ex1 = x8+30
+            ey1 = y8 + 10
+            ex2 = ex1 + 10
+            ey2 = ey1 + 10
+            
+      
+      ball = s.create_oval( x1, y1, x2, y2, fill="orange" )
+      man = s.create_line(x3,y3,x5,y4,x6,y5,x5,y4,x5,y7,x7,y6,x5,y7,x3,y6,x5,y7,x5,y3,fill = "black",width = 7)
+      head = s.create_oval(x8,y8,x9,y9,fill = "brown")
+      eye = s.create_oval(ex1,ey1,ex2,ey2, fill = "black", outline = "white", width = 4)
+       
+      
+      
+      if f == 1:
+            s.create_line(875,500,950,500,fill = "orange",width = 10)
+            s.create_line(950,500,975,500,fill = "orange",width = 4)
+            s.create_line(975,425,975,550,fill = "white", width = 12)
+            s.create_line(975,550,975,800,fill = "black", width = 5)
+            
+            
+
+            s.create_rectangle(dx1,dy1,dx2,dy2,fill = "grey38",outline = "black")
+      
+      elif 105>f >= 90:
+            s.create_line(875,500,950,500,fill = "orange",width = 10)
+            s.create_line(950,500,975,500,fill = "orange",width = 4)
+            s.create_line(975,425,975,550,fill = "white", width = 12)
+            s.create_line(975,550,975,800,fill = "black", width = 5)
+
+      
+
+                  
+      
+            
+      
+
+      s.update()
+      sleep(.02)
+      s.delete( ball , man, head, eye)  
+
+
+
+
+
+for f in range(35):
+      for confetti in range(7):
+            dx1 = randint(5,1005)
+            dy1 = randint(5,700)
+            ds = randint(1,5)
+            dx2 = dx1 + ds
+            dy2 = dy1 + ds
+            dys = randint(10,15)
+            dxs = randint(3,7)
+
+            confetti = s.create_rectangle(dx1,dy1,dx2,dy2, fill = "red", outline = "black", width = 3)
+            dx1 = dx1 + dxs
+            dy1 = dy1 + dy2
+            dys = randint(10,15)
+            dxs = randint(3,7)
+
+      
+      yb = y1 + 65
+      x1 =  x1                            
+      y1 = .29*f**2 - 10*f + yb
+      x2 = x1 + 50
+      y2 = y1 + 50
+      ex1 = x8+30
+      ey1 = y8 + 10
+      ex2 = ex1 + 10
+      ey2 = ey1 + 10
+     
+      
+      ball = s.create_oval( x1, y1, x2, y2, fill="orange" )
+      man = s.create_line(x3,y3,x5,y4,x6,y5,x5,y4,x5,y7,x7,y6,x5,y7,x3,y6,x5,y7,x5,y3,fill = "black",width = 7)
+      
+      head = s.create_oval(x8,y8,x9,y9,fill = "brown")
+      eye = s.create_oval(ex1,ey1,ex2,ey2, fill = "black", outline = "white", width = 4)
+       
+      
+
+      s.update()
+      sleep(.02)
+      s.delete( ball , man, head, confetti,eye)  
+
+      
+
+
+
+spacing = 50
+
+for x in range(0, 1000, spacing): 
+    s.create_line( x, 25, x, 1000, fill="white")
+    s.create_text( x, 5, text=str(x), font="Times 9", anchor = N)
+
+for y in range(0, 1000, spacing):
+    s.create_line( 25, y, 1000, y, fill="white")
+    s.create_text( 5, y, text=str(y), font="Times 9", anchor = W,fill = "white")
+
+s.update()
+
+
+
